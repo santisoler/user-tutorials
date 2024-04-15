@@ -9,6 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PYTHON: "3.10"
+        #
+    # Use bash by default in all jobs
+    defaults:
+      run:
+        shell: bash -el {0}
 
     steps:
       - name: Checkout repo
@@ -29,4 +34,4 @@ jobs:
 
       - name: Run notebook
         run:
-          jupyter-nbconvert --execute --to notebook --inplace --allow-errors --ExecutePreprocessor.kernel_name=python3 notebooks/03-gravity/*.ipynb
+          jupyter execute --inplace notebooks/03-gravity/*.ipynb
